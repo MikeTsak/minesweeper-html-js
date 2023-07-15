@@ -7,7 +7,7 @@ Playful Minesweeper is a fun, interactive implementation of the classic game of 
 To get a local copy up and running, follow these simple steps:
 
 1. Clone the repo
-git clone https://github.com/MikeTsak/minesweeper-html-js.git
+`git clone https://github.com/MikeTsak/minesweeper-html-js.git`
 
 2. Open `index.html` in your browser to start playing the game!
 
@@ -21,5 +21,7 @@ git clone https://github.com/MikeTsak/minesweeper-html-js.git
 ## Built With
 
 This project is built using vanilla HTML, CSS and JavaScript.
+
+## Demo
 
 Live demo: [https://miketsak.gr/projects/Minesweeper/index.html](https://miketsak.gr/projects/Minesweeper/index.html)
