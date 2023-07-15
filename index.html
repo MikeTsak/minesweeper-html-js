@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .mine { background-color: red; }
+        .safe { background-color: green; }
+        .unknown { background-color: lightgray; }
+        .grid { display: flex; flex-wrap: wrap; }
+        .cell { width: 30px; height: 30px; border: 1px solid black; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="grid" class="grid"></div>
+
+    <script>
+        const size = 10;
+        const mines = 20;
+        const mineLocations = new Set();
+        while (mineLocations.size < mines) {
+            mineLocations.add(Math.floor(Math.random() * size * size));
+        }
+
+        const grid = document.getElementById('grid');
+        for (let i = 0; i < size * size; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell', 'unknown');
+            cell.addEventListener('click', () => {
+                if (mineLocations.has(i)) {
+                    cell.classList.remove('unknown');
+                    cell.classList.add('mine');
+                    alert('Game Over');
+                } else {
+                    let mineCount = 0;
+                    for (let dx = -1; dx <= 1; dx++) {
+                        for (let dy = -1; dy <= 1; dy++) {
+                            const ni = i + dx + dy * size;
+                            if (ni >= 0 && ni < size * size && ((i % size) + dx >= 0) && ((i % size) + dx < size) && mineLocations.has(ni)) {
+                                mineCount++;
+                            }
+                        }
+                    }
+                    cell.classList.remove('unknown');
+                    cell.classList.add('safe');
+                    cell.textContent = mineCount > 0 ? mineCount : '';
+                }
+            });
+            grid.appendChild(cell);
+        }
+    </script>
+</body>
+</html>
